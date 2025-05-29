@@ -1,0 +1,79 @@
+.publication-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.publication-container h1 {
+  color: #333;
+}
+
+.description {
+  white-space: pre-wrap;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-left: 4px solid #4caf50;
+}
+
+.plots {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.plots img {
+  max-width: 48%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.unpublished-warning {
+  text-align: center;
+  font-size: 18px;
+  color: #e74c3c;
+  margin-top: 50px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+
+.publish-btn, .denied-btn{
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.publish-btn:hover {
+  background-color: #218838;
+  transition-duration: 0.5s;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.denied-btn{
+  background-color: #a72828;
+}
+
+.denied-btn:hover{
+  background-color: #671818;
+  transition-duration: 0.5s;
+}

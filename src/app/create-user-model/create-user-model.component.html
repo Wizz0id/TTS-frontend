@@ -1,0 +1,61 @@
+<link rel="stylesheet">
+<div class="training-container">
+  <h2>Обучение модели</h2>
+
+  <!-- Выбор базовой модели -->
+  <div class="form-group">
+    <label for="baseModel">Выберите базовую модель:</label>
+    <select id="baseModel" [(ngModel)]="trainingRequest.baseModel">
+      @for (model of baseModels; track $index){
+        <option [value]="model">{{ model.name }}</option>
+      }
+    </select>
+  </div>
+
+  <!-- Тип обучения -->
+  <div class="form-group">
+    <label>
+      <input type="radio" name="type" [(ngModel)]="trainingRequest.trainingType" value="LOCAL">
+      Локальное обучение
+    </label>
+    <label>
+      <input type="radio" name="type" [(ngModel)]="trainingRequest.trainingType" value="CLOUD">
+      Облако (Google Colab)
+    </label>
+  </div>
+
+  <!-- Токен -->
+  <div class="token-section">
+    <label>Токен:</label>
+    <div class="token-box">
+      <div class="token-input" #tokenInput>
+        <span>{{ trainingRequest.token }}</span>
+        <button (click)="copyToken(tokenInput)" class="copy-button">
+          <i class="fa fa-copy"></i> Copy
+        </button>
+      </div>
+    </div>
+    <button (click)="generateToken()" class="btn">Сгенерировать токен</button>
+  </div>
+
+  <!-- Локальное обучение -->
+  @if (trainingRequest.trainingType === 'LOCAL') {
+    <div class="local-training">
+      <p>Для локального обучения вам нужно установить специальный скрипт.</p>
+      <button (click)="downloadScript()" class="download-btn">
+        Скачать скрипт train.py
+      </button>
+    </div>
+  }
+
+  <!-- Облачное обучение -->
+  @if (trainingRequest.trainingType === 'CLOUD') {
+    <div class="cloud-training">
+      <h4>Перейдите по ссылке ниже и укажите данные для запуска обучения в Google Colab</h4>
+      <a [href]="generateColabLink()" target="_blank" class="colab-button">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg " alt="Open in Colab">
+      </a>
+    </div>
+  }
+</div>
+<div #notificationContainer></div>

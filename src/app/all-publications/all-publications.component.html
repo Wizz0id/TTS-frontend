@@ -1,0 +1,24 @@
+<div class="publications-list">
+  <h2>Все публикации</h2>
+
+  @if (loading) {
+    <p>Загрузка публикаций...</p>
+  } @else if (publications.length === 0) {
+    <p>Нет доступных публикаций</p>
+  } @else {
+    <div class="publication-grid">
+      @for (publication of publications; track publication.id) {
+        <div
+          class="publication-card"
+          [class.unpublished]="!publication.published && currentUserRole === 'ADMIN'"
+          (click)="goToPublication(publication.id)"
+        >
+          <h3>{{ publication.title }}</h3>
+          <p>Автор: {{ publication.username }}</p>
+          <p>Модель: {{ publication.model.name }}</p>
+
+        </div>
+      }
+    </div>
+  }
+</div>

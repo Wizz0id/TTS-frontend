@@ -1,0 +1,74 @@
+.main {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.main h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.tab {
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  background-color: #e0e0e0;
+  color: #333;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background-color: #d0d0d0;
+  transform: scale(1.03);
+}
+
+.tab.active {
+  background-color: #4CAF50;
+  color: white;
+  box-shadow: 0 4px 10px rgb(58, 136, 62);
+}
+
+.content {
+  padding: 20px;
+}
+
+.model-selection, .text-input {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

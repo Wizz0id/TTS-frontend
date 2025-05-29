@@ -1,0 +1,54 @@
+<div class="auth-container">
+  <div class="auth-tabs">
+    <button [class.active]="isLogin" (click)="toggleForm()">Вход</button>
+    <button [class.active]="!isLogin" (click)="toggleForm()">Регистрация</button>
+  </div>
+
+  @if (isLogin) {
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <h2>Войти в аккаунт</h2>
+
+      <label for="username">Имя пользователя</label>
+      <input type="text" id="username" name="username" [(ngModel)]="loginData.username" required #username="ngModel">
+      @if (username.touched && username.invalid) {
+        <small class="error-text">Это поле обязательно</small>
+      }
+
+      <label for="password">Пароль</label>
+      <input type="password" id="password" name="password" [(ngModel)]="loginData.password" required #password="ngModel" minlength="6">
+      @if (password.touched && password.invalid) {
+        <small class="error-text">Минимум 6 символов</small>
+      }
+
+      <button type="submit" [disabled]="!loginForm.form.valid" class="submit-btn">
+        Войти
+      </button>
+    </form>
+  } @else {
+    <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+      <h2>Зарегистрироваться</h2>
+
+      <label for="reg-username">Имя пользователя</label>
+      <input type="text" id="reg-username" name="regUsername" [(ngModel)]="registerData.username" required #regUsername="ngModel">
+      @if (regUsername.touched && regUsername.invalid) {
+        <small class="error-text">Это поле обязательно</small>
+      }
+
+      <label for="reg-password">Пароль</label>
+      <input type="password" id="reg-password" name="regPassword" [(ngModel)]="registerData.password" required #regPassword="ngModel" minlength="6">
+      @if (regPassword.touched && regPassword.invalid) {
+        <small class="error-text">Минимум 6 символов</small>
+      }
+
+      <label for="reg-confirm">Подтвердите пароль</label>
+      <input type="password" id="reg-confirm" name="regConfirm" [(ngModel)]="registerData.confirm" required #regConfirm="ngModel">
+      @if (regConfirm.touched && regConfirm.dirty && registerData.password !== registerData.confirm) {
+        <small class="error-text">Пароли не совпадают</small>
+      }
+
+      <button type="submit" [disabled]="!registerForm.form.valid || registerData.password !== registerData.confirm" class="submit-btn">
+        Зарегистрироваться
+      </button>
+    </form>
+  }
+</div>

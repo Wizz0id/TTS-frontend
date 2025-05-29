@@ -1,0 +1,30 @@
+@if(baseModels){
+  <div class="model-selection">
+    <label for="model">Выберите модель TTS</label>
+    <select id="model" [(ngModel)]="selectedModel">
+      @for (model of baseModels; track $index)
+      {
+        <option [ngValue]="model">{{model.name}}</option>
+      }
+    </select>
+    @if(selectedModel){
+      <select id="voice" [(ngModel)]="voice">
+        @for (v of selectedModel.voiceList; track $index)
+        {
+          <option [ngValue]="v">{{v.name}}</option>
+        }
+      </select>
+    }
+    <div class="text-input">
+      <label for="text">Введите текст</label>
+      <textarea id="text" [(ngModel)]="inputText"></textarea>
+    </div>
+    <button (click)="generateVoice()">Сгенерировать голос</button>
+    @if(generatedAudioPath){
+      <audio controls>
+        <source [src]="generatedAudioPath" type="audio/wav">
+        Ваш браузер не поддерживает элемент audio.
+      </audio>
+    }
+  </div>
+}

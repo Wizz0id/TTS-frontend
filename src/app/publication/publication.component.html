@@ -1,0 +1,37 @@
+@if (isLoading) {
+  <div class="loading">Загрузка данных...</div>
+} @else if (!publication?.published && currentUserRole !== 'ADMIN') {
+  <div class="error">Публикация не найдена или недоступна.</div>
+} @else {
+  <div class="publication-container">
+    <h1>{{ publication?.title }}</h1>
+    <p>Автор: {{ publication?.username }}</p>
+    <p>Описание:</p>
+    <p class="description">{{ publication?.description }}</p>
+
+    <hr>
+    <h3>Модель: {{ model?.name }}</h3>
+    <p>Базовая модель: {{ model?.baseName }}</p>
+    <a [href]="model?.pathToModel" target="_blank">Скачать</a>
+
+    <div class="plots">
+      <p>STOI: {{model?.stoi}}</p>
+      <p>PESQ: {{model?.pesq}}</p>
+      <p>CD: {{model?.cd}}</p>
+      <img [src]="environment.url + '/' + model?.pathToLossPlot" alt="График потерь">
+      <img [src]="environment.url + '/' + model?.pathToAccuracyPlot" alt="График точности">
+    </div>
+
+    <!-- Кнопка "Опубликовать" -->
+    @if (currentUserRole === 'ADMIN' && !publication?.published) {
+      <div class="buttons">
+        <button class="publish-btn" (click)="publishPublication()">
+          Опубликовать эту публикацию
+        </button>
+        <button class="denied-btn" (click)="deniedPublication()">
+          Отказать в публикации
+        </button>
+      </div>
+    }
+  </div>
+}

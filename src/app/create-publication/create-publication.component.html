@@ -1,0 +1,43 @@
+<div class="publication-form">
+  <h2>Создать публикацию</h2>
+
+  @if (!user || userModels.length === 0) {
+    <p>Загрузка данных...</p>
+  } @else {
+    <form (ngSubmit)="onSubmit()" #publicationForm="ngForm">
+      <div class="form-group">
+        <label for="title">Название публикации:</label>
+        <input type="text" id="title" [(ngModel)]="publication.title" name="title" required #title="ngModel">
+        @if (title.touched && title.invalid) {
+          <small class="error-text">Это поле обязательно</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="description">Описание:</label>
+        <textarea id="description" [(ngModel)]="publication.description" name="description" required #description="ngModel"></textarea>
+        @if (description.touched && description.invalid) {
+          <small class="error-text">Это поле обязательно</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="model">Выберите модель:</label>
+        <select id="model" [(ngModel)]="publication.model" name="model" required #modelSelect="ngModel">
+          @for (model of userModels; track $index){
+            <option [ngValue]="model">
+              {{ model.name }}
+            </option>
+          }
+        </select>
+        @if (modelSelect.touched && modelSelect.invalid) {
+          <small class="error-text">Выберите модель</small>
+        }
+      </div>
+
+      <button type="submit" [disabled]="!publicationForm.form.valid" class="submit-btn">
+        Опубликовать
+      </button>
+    </form>
+  }
+</div>

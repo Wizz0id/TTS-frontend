@@ -1,0 +1,52 @@
+<div class="profile-container">
+  <div class="user-info">
+    <h2>Профиль пользователя</h2>
+    <p><strong>Имя:</strong> {{ user.username }}</p>
+  </div>
+  <hr>
+  <!-- Модели -->
+  <div class="models-section">
+    <h3>Мои модели</h3>
+    @if (models.length === 0) {
+      <p>У вас пока нет обученных моделей.</p>
+    } @else {
+      <div class="models-grid">
+        @for (model of models; track model.id) {
+          <div class="model-card">
+            <h4>{{ model.name }}</h4>
+            <p>Описание: {{ model.description }}</p>
+            <p>Базовая модель: {{ model.baseName }}</p>
+            <div class="model-actions">
+              <a [href]="model.pathToModel" target="_blank">Скачать модель</a>
+              <img [src]="environment.url + '/' + model.pathToLossPlot" alt="График потерь">
+              <img [src]="environment.url + '/' + model.pathToAccuracyPlot" alt="График точности">
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+  <hr>
+  <!-- Публикации -->
+  <div class="publications-section">
+    <h3>Публикации</h3>
+    <button (click)="createPublication()">Создать публикацию</button>
+    @if (publications.length === 0) {
+      <p>Нет публикаций.</p>
+    } @else {
+      <ul>
+        @for (pub of publications; track pub.id) {
+          <li class="publication-card">
+            <h4>{{ pub.title }}</h4>
+            <p>{{ pub.description }}</p>
+            <small>Автор: {{ pub.username }}</small>
+            <div class="publication-model-link">
+              <a (click)="goToPublication(pub.id)">Перейти к публикации</a>
+            </div>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</div>
+

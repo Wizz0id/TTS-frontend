@@ -1,0 +1,194 @@
+.training-container {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.training-container h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+select:focus,
+input[type="text"]:focus {
+  border-color: #28a745;
+  outline: none;
+  box-shadow: 0 0 0 3px #1d6c2e;
+}
+
+.token-section {
+  margin-bottom: 20px;
+}
+
+.token-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.token-box input {
+  flex-grow: 1;
+}
+
+.btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #218838;
+}
+
+.local-training,
+.cloud-training {
+  background-color: #f7f9fc;
+  border-left: 4px solid #28a745;
+  padding: 15px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.cloud-training pre {
+  background-color: #2d2d2d;
+  color: #d6d6d6;
+  padding: 15px;
+  overflow-x: auto;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #28a745;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.result {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #e9ffe8;
+  border-left: 4px solid #28a745;
+  border-radius: 8px;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #218838;
+}
+.token-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px 40px 10px 15px; /* Больше вертикального и горизонтального отступа */
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  min-height: 40px; /* Минимальная высота */
+  width: 100%; /* Занимает всю доступную ширину */
+}
+
+.token-input span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  display: block;
+}
+
+.copy-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+}
+
+.copy-button:hover {
+  color: #144f20;
+}
+.notification {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 14px;
+  border-radius: 8px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.notification::before {
+  content: '\26A0'; /* Иконка информационного знака */
+  margin-right: 5px;
+  font-weight: bold;
+  color: #fff; /* Цвет иконки */
+}
